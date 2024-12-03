@@ -1,72 +1,110 @@
 fun main() {
-    var continueProgram: Char = '0'
-    while (continueProgram != 'N') {
-        println("დაწყება")
-        val x = getUserInput("შეიყვანეთ X ცვლადის მნიშვნელობა: ")
-        val y = getUserInput("შეიყვანეთ Y ცვლადის მნიშვნელობა: ")
-        var z: Double
+    var mathOperations = MathematicalOperations()
+    var prompt = ""
 
-        var numericPartOfX = findNumericPartOfString(x)
-        var numericPartOfY = findNumericPartOfString(y)
-        var xContainsNumOrNot = containsNumericDataOrNot(x)
-        var yContainsNumOrNot = containsNumericDataOrNot(y)
-
-        if(!xContainsNumOrNot) {
-            numericPartOfX = "0"
-        }
-        if(!yContainsNumOrNot) {
-            numericPartOfY = "0"
-        }
-        val numericValueOfX = numericPartOfX.toInt()
-        val numericValueOfY = numericPartOfY.toInt()
-        println("X-ის მნიშვნელობაა: $numericValueOfX")
-        println("Y-ის მნიშვნელობაა: $numericValueOfY")
-
-        if (numericValueOfY == 0) {
-            println("ნულზე გაყოფა ნებადართული არაა.")
-        } else {
-            z = (numericValueOfX.toDouble() / numericValueOfY.toDouble())
-            println("X და Y განაყოფი არის: $z")
-        }
-        var answer: String?
-        do {
-            print("გსურთ პროგრამის ხელახლა დაწყება <Y/N>? ")
-            answer = readLine()?.trim()?.uppercase()
-
-            if (answer.isNullOrEmpty() || answer.length > 1 || (answer != "Y" && answer != "N")) {
-                println("არასწორი პასუხი. გთხოვთ, შეიყვანოთ მხოლოდ Y ან N.")
+    while (true) {
+        displayMainBoard()
+        val choice = usersNumericInput(prompt)
+        when (choice) {
+            1 -> findGCD(mathOperations)
+            2 -> findLCM(mathOperations)
+            3 -> checkDollarSign(mathOperations)
+            4 -> useCounter(mathOperations)
+            5 -> reverseNumber(mathOperations)
+            6 -> checkPalindrome(mathOperations)
+            7 -> {
+                println("Exiting the program. Goodbye!")
+                break
             }
-        } while (answer.isNullOrEmpty() || answer.length > 1 || (answer != "Y" && answer != "N"))
-        if (answer == "N") {
-            println("დასასრული.")
-            break
+            else -> println("Invalid input. Please enter a number between 1 and 7.")
         }
     }
 }
-fun getUserInput(prompt: String): String {
-    var input: String?
-    do {
-        print(prompt)
-        input = readLine()
-        if (input.isNullOrBlank()) {
-            println("გთხოვთ, შეიყვანოთ ნებისმიერი მნიშვნელობა, რომ ველი ცარიელი არ იყოს.")
-        }
-    } while (input.isNullOrBlank())
-    return input
+
+fun displayMainBoard() {
+    println("Welcome to the dashboard! Enter the operation you want to proceed: ")
+    println("1. Find the greatest common divisor of two numbers")
+    println("2. Find the least common multiple")
+    println("3. Check if the string contains a dollar sign")
+    println("4. Use the counter function")
+    println("5. Return the reversed number")
+    println("6. Check if the given string is a palindrome")
+    println("7. Exit")
 }
-fun findNumericPartOfString(string: String): String {
-    var numericPartOfString: String = ""
-    for (char in string!!) {
-        if (char.isDigit()) {
-            numericPartOfString += char
-        }
-    }
-    return numericPartOfString
+fun findGCD(mathOperationGCD: MathematicalOperations) {
+    val prompt1 = "Enter the first number: "
+    val firstNum = usersNumericInput(prompt1)
+    val prompt2 = "Enter the second number: "
+    var secondNum = usersNumericInput(prompt2)
+    var greatestCommonDivisor = mathOperationGCD.greatestCommonDivisor(firstNum, secondNum)
+    println("The greatest common divisor of $firstNum and $secondNum is: $greatestCommonDivisor")
 }
-fun containsNumericDataOrNot(string: String): Boolean {
-    if (!string.any { it.isDigit() }) {
-        return false
+fun findLCM(mathOperationLCM: MathematicalOperations) {
+    val prompt1 = "Enter the first number: "
+    val firstNum = usersNumericInput(prompt1)
+    val prompt2 = "Enter the second number: "
+    var secondNum = usersNumericInput(prompt2)
+    var leastCommonMultiple = mathOperationLCM.leastCommonMultiple(firstNum, secondNum)
+    println("The least common multiple of $firstNum and $secondNum is: $leastCommonMultiple")
+}
+fun checkDollarSign(checkingDollarSign: MathematicalOperations) {
+    var prompt = "Enter the string you want to check: "
+    var string = usersStringInput(prompt)
+    if(checkingDollarSign.containsDollarSignOrNot(string)) {
+        println("This string contains dollar sign")
     } else {
-        return true
+        println("This string doesn't contain dollar sign")
+    }
+}
+fun useCounter(mathOperationCounter: MathematicalOperations) {
+    val prompt1 = "Enter the first number: "
+    val firstNum = usersNumericInput(prompt1)
+    val prompt2 = "Enter the last number: "
+    var lastNum = usersNumericInput(prompt2)
+    println("Here is count from $firstNum to $lastNum: ")
+    mathOperationCounter.counterFunc(firstNum, lastNum)
+}
+fun reverseNumber(mathOperReturnReversedNum: MathematicalOperations) {
+    val prompt = "Enter the first number: "
+    val number = usersNumericInput(prompt)
+    val reversedNumber = mathOperReturnReversedNum.returnReversedNumber(number)
+    println("Reversed number of $number is $reversedNumber")
+}
+fun checkPalindrome(checkingPalindrome: MathematicalOperations) {
+    var prompt = "Enter the string you want to check: "
+    var string = usersStringInput(prompt)
+    if(checkingPalindrome.isPalindromeOrNot(string)) {
+        println("This string is palindrome.")
+    } else {
+        println("This string isn't palindrome.")
+    }
+}
+fun usersNumericInput(prompt: String, allowNegative: Boolean = false): Int {
+    println(prompt)
+    while (true) {
+        val input = readLine() ?: ""
+        val num = input.toIntOrNull()
+
+        if (num != null) {
+            if (allowNegative || num >= 0) {
+                return num
+            } else {
+                println("Invalid input. Please enter a non-negative integer.")
+            }
+        } else {
+            print("Invalid input. Please enter a valid integer: ")
+        }
+    }
+}
+fun usersStringInput(string: String) : String {
+    print(string)
+    val input = readLine()
+    while (true) {
+
+        if (!input.isNullOrBlank()) {
+            return input
+        } else {
+            print("Empty input. Please enter something: ")
+        }
     }
 }
