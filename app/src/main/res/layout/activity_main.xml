@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/NumberInputField"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:hint="Enter a number (1-1000)"
+        android:textColor="@color/red"
+        android:inputType="number"
+        android:clickable="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="45dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/ClickButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="button"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="422dp" />
+        android:text="submit"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="10dp"/>
 
-    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/TextDisplay"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:text="I'm here to show the answer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.264" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/NumberInput"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:text="Enter the number"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="133dp"
-        tools:layout_editor_absoluteY="276dp" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/NumberInput"
+        android:layout_marginLeft="50dp"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
