@@ -7,33 +7,5 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/NumberInputField"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:hint="Enter a number (1-1000)"
-        android:textColor="@color/red"
-        android:inputType="number"
-        android:clickable="true"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="45dp"/>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/ClickButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="submit"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="10dp"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/TextDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/NumberInput"
-        android:layout_marginLeft="50dp"/>
-
 
 </androidx.appcompat.widget.LinearLayoutCompat>
