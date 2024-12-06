@@ -8,4 +8,250 @@
     tools:context=".MainActivity">
 
 
+    <LinearLayout
+        android:id="@+id/ProfileInfoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:weightSum="2" >
+
+        <TextView
+            android:id="@+id/ProfileInfoPrompt"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="@string/Profile_Info"
+            android:background="@color/green"
+            android:textSize="30sp"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+<LinearLayout
+    android:id="@+id/UserEmailLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="40dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:weightSum="2" >
+
+    <TextView
+        android:id="@+id/UserEmailInputPrompt"
+        android:layout_width="118dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="10dp"
+        android:layout_weight="0.6"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="User Email"
+        android:background="@color/backgroundColor"
+        android:textSize="20sp"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/UserEmailinput"
+        android:layout_width="229dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_weight="1.4"
+        android:background="@color/editTextBack"
+        android:hint="@string/Email"
+        android:imeOptions="actionNext"
+        android:paddingStart="10dp"
+        android:singleLine="true"
+        android:textSize="20sp"
+        android:textColor="@color/black" />
+</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/UsernameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:weightSum="2" >
+
+    <TextView
+        android:id="@+id/UsernamerInputPrompt"
+        android:layout_width="118dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="10dp"
+        android:layout_weight="0.6"
+        android:background="@color/backgroundColor"
+        android:gravity="center_vertical"
+        android:paddingStart="10dp"
+        android:text="Username"
+        android:textSize="20sp"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/UsernameInput"
+        android:layout_width="229dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_weight="1.4"
+        android:background="@color/editTextBack"
+        android:hint="@string/Username"
+        android:imeOptions="actionNext"
+        android:paddingStart="10dp"
+        android:singleLine="true"
+        android:textSize="20sp"
+        android:textColor="@color/black" />
+</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/FirstNameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:weightSum="2" >
+
+        <TextView
+            android:id="@+id/FirstNameInputPrompt"
+            android:layout_width="118dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="0.6"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:background="@color/backgroundColor"
+            android:text="First name"
+            android:textSize="20sp"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/FirstNameInput"
+            android:layout_width="229dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1.4"
+            android:background="@color/editTextBack"
+            android:hint="@string/First_name"
+            android:imeOptions="actionNext"
+            android:paddingStart="10dp"
+            android:singleLine="true"
+            android:textSize="20sp"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LastNameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:weightSum="2" >
+
+        <TextView
+            android:id="@+id/LastNameInputPrompt"
+            android:layout_width="118dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="0.6"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:background="@color/backgroundColor"
+            android:text="Last name"
+            android:textSize="20sp"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/LastNameInput"
+            android:layout_width="229dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1.4"
+            android:background="@color/editTextBack"
+            android:hint="@string/Last_name"
+            android:imeOptions="actionNext"
+            android:paddingStart="10dp"
+            android:singleLine="true"
+            android:shadowColor="@color/backgroundColor"
+            android:textSize="20sp"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/AgeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:weightSum="2" >
+
+        <TextView
+            android:id="@+id/AgeInputPrompt"
+            android:layout_width="118dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="0.6"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:text="Age"
+            android:background="@color/backgroundColor"
+            android:textSize="20sp"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/AgeInput"
+            android:layout_width="229dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1.4"
+            android:background="@color/editTextBack"
+            android:hint="@string/Age"
+            android:imeOptions="actionNext"
+            android:paddingStart="10dp"
+            android:singleLine="true"
+            android:textSize="20sp"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/SaveBtnLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:weightSum="2" >
+
+                <Button
+                    android:id="@+id/SaveButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/Save_Btn"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="2dp"
+                    />
+
+                <Button
+                    android:id="@+id/ClearButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/Clear_btn"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="2dp"/>
+            </LinearLayout>
+
+
 </androidx.appcompat.widget.LinearLayoutCompat>
