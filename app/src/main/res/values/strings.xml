@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">MyFirsAndroidApp</string>
-    <string name="Email">Email </string>
-    <string name="First_name">First Name\n</string>
-    <string name="Username">Username\n</string>
-    <string name="Last_name">Last Name</string>
-    <string name="Age">Age</string>
-    <string name="Save_Btn">Save\n</string>
-    <string name="Exit_Btn">Exit</string>
-    <string name="Clear_btn">Clear</string>
-    <string name="Profile_Info">Profile Info</string>
-    <string name="Again">Again</string>
+    <string name="app_name">MyAppForWorking</string>
+    <string name="enter_full_name">Enter Full Name\n</string>
+    <string name="Enter_Email">Enter Email\n</string>
+    <string name="Save_User_Btn">Add User</string>
+    <string name="Users_Count">Users -> @</string>
+    <string name="test">test\t</string>
+    <string name="Email_Input">Enter Email\n</string>
+    <string name="get_User_Info">get user info\n</string>
+    <string name="email_input">Enter Email\n</string>
+    <string name="get_user_info">get user info</string>
+    <string name="save_user_btn">Add User</string>
 </resources>

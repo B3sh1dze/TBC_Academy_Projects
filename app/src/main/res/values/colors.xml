@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
+    <color name="black">#000000</color>
+    <color name="yellow">#DBC97E</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="green">#8FF093</color>
-    <color name="red">#FF0000</color>
-    <color name="editTextBack">#E5EDE5</color>
-    <color name="backgroundColor">#FFFFFF</color>
+    <color name="green">#88DC88</color>
+    <color name="purple">#6238CA</color>
+    <color name="cyan">#A5FAED</color>"
 </resources>
