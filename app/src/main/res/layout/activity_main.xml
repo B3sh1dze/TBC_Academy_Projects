@@ -4,84 +4,46 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@color/cyan">
+    android:background="@color/white">
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etFullNameInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/enter_full_name"
-        android:background="@color/yellow"
-        android:padding="12dp"
-        android:layout_marginTop="35dp"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:layout_gravity="center_horizontal" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etEmailInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/email_input"
-        android:background="@color/yellow"
-        android:padding="12dp"
-        android:layout_marginTop="12dp"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:layout_gravity="center_horizontal" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/addUserBtn"
+        android:id="@+id/anagramEnterBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/save_user_btn"
-        android:textSize="16sp"
-        android:backgroundTint="@color/purple"
-        android:textColor="@color/black" />
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:hint="@string/enter_Anagram"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvUsersCount"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/anagramSaveBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="@color/green"
-        android:text="Users -> 0"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:layout_gravity="center_horizontal" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etSearchEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/email_input"
-        android:background="@color/yellow"
-        android:padding="12dp"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:layout_gravity="center_horizontal" />
+        android:layout_marginStart="20dp"
+        android:text="@string/save_Anagram" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/searchEmailBtn"
+        android:id="@+id/anagramOutputBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/get_user_info"
-        android:textSize="16sp"
-        android:backgroundTint="@color/purple"
-        android:textColor="@color/black" />
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/output_Anagrams" />
+
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/showUserInfo"
+        android:id="@+id/tvShowAnagrams"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_gravity="center_horizontal"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:background="@color/yellow"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/show_Anagrams"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/clearBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/Clear" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -10,4 +10,9 @@
     <string name="email_input">Enter Email\n</string>
     <string name="get_user_info">get user info</string>
     <string name="save_user_btn">Add User</string>
+    <string name="enter_Anagram">Enter Anagram</string>
+    <string name="save_Anagram">Save</string>
+    <string name="output_Anagrams">Output</string>
+    <string name="show_Anagrams">Anagrams</string>
+    <string name="Clear">Clear</string>
 </resources>
