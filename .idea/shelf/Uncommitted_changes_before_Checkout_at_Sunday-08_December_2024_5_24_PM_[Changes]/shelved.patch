@@ -1,0 +1,84 @@
+Index: src/Main.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>fun main() {\r\n    var continueProgram: Char = '0'\r\n    while (continueProgram != 'N') {\r\n        println(\"დაწყება\")\r\n        val x = getUserInput(\"შეიყვანეთ X ცვლადის მნიშვნელობა: \")\r\n        val y = getUserInput(\"შეიყვანეთ Y ცვლადის მნიშვნელობა: \")\r\n        var z: Double\r\n\r\n        var numericPartOfX = findNumericPartOfString(x)\r\n        var numericPartOfY = findNumericPartOfString(y)\r\n        var xContainsNumOrNot = containsNumericDataOrNot(x)\r\n        var yContainsNumOrNot = containsNumericDataOrNot(y)\r\n\r\n        if(!xContainsNumOrNot) {\r\n            numericPartOfX = \"0\"\r\n        }\r\n        if(!yContainsNumOrNot) {\r\n            numericPartOfY = \"0\"\r\n        }\r\n        val numericValueOfX = numericPartOfX.toInt()\r\n        val numericValueOfY = numericPartOfY.toInt()\r\n        println(\"X-ის მნიშვნელობაა: $numericValueOfX\")\r\n        println(\"Y-ის მნიშვნელობაა: $numericValueOfY\")\r\n\r\n        if (numericValueOfY == 0) {\r\n            println(\"ნულზე გაყოფა ნებადართული არაა.\")\r\n        } else {\r\n            z = (numericValueOfX.toDouble() / numericValueOfY.toDouble())\r\n            println(\"X და Y განაყოფი არის: $z\")\r\n        }\r\n        var answer: String?\r\n        do {\r\n            print(\"გსურთ პროგრამის ხელახლა დაწყება <Y/N>? \")\r\n            answer = readLine()?.trim()?.uppercase()\r\n\r\n            if (answer.isNullOrEmpty() || answer.length > 1 || (answer != \"Y\" && answer != \"N\")) {\r\n                println(\"არასწორი პასუხი. გთხოვთ, შეიყვანოთ მხოლოდ Y ან N.\")\r\n            }\r\n        } while (answer.isNullOrEmpty() || answer.length > 1 || (answer != \"Y\" && answer != \"N\"))\r\n        if (answer == \"N\") {\r\n            println(\"დასასრული.\")\r\n            break\r\n        }\r\n    }\r\n}\r\nfun getUserInput(prompt: String): String {\r\n    var input: String?\r\n    do {\r\n        print(prompt)\r\n        input = readLine()\r\n        if (input.isNullOrBlank()) {\r\n            println(\"გთხოვთ, შეიყვანოთ ნებისმიერი მნიშვნელობა, რომ ველი ცარიელი არ იყოს.\")\r\n        }\r\n    } while (input.isNullOrBlank())\r\n    return input\r\n}\r\nfun findNumericPartOfString(string: String): String {\r\n    var numericPartOfString: String = \"\"\r\n    for (char in string!!) {\r\n        if (char.isDigit()) {\r\n            numericPartOfString += char\r\n        }\r\n    }\r\n    return numericPartOfString\r\n}\r\nfun containsNumericDataOrNot(string: String): Boolean {\r\n    if (!string.any { it.isDigit() }) {\r\n        return false\r\n    } else {\r\n        return true\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Main.kt b/src/Main.kt
+--- a/src/Main.kt	
++++ b/src/Main.kt	
+@@ -1,72 +1,3 @@
+ fun main() {
+-    var continueProgram: Char = '0'
+-    while (continueProgram != 'N') {
+-        println("დაწყება")
+-        val x = getUserInput("შეიყვანეთ X ცვლადის მნიშვნელობა: ")
+-        val y = getUserInput("შეიყვანეთ Y ცვლადის მნიშვნელობა: ")
+-        var z: Double
+-
+-        var numericPartOfX = findNumericPartOfString(x)
+-        var numericPartOfY = findNumericPartOfString(y)
+-        var xContainsNumOrNot = containsNumericDataOrNot(x)
+-        var yContainsNumOrNot = containsNumericDataOrNot(y)
+ 
+-        if(!xContainsNumOrNot) {
+-            numericPartOfX = "0"
+-        }
+-        if(!yContainsNumOrNot) {
+-            numericPartOfY = "0"
+-        }
+-        val numericValueOfX = numericPartOfX.toInt()
+-        val numericValueOfY = numericPartOfY.toInt()
+-        println("X-ის მნიშვნელობაა: $numericValueOfX")
+-        println("Y-ის მნიშვნელობაა: $numericValueOfY")
+-
+-        if (numericValueOfY == 0) {
+-            println("ნულზე გაყოფა ნებადართული არაა.")
+-        } else {
+-            z = (numericValueOfX.toDouble() / numericValueOfY.toDouble())
+-            println("X და Y განაყოფი არის: $z")
+-        }
+-        var answer: String?
+-        do {
+-            print("გსურთ პროგრამის ხელახლა დაწყება <Y/N>? ")
+-            answer = readLine()?.trim()?.uppercase()
+-
+-            if (answer.isNullOrEmpty() || answer.length > 1 || (answer != "Y" && answer != "N")) {
+-                println("არასწორი პასუხი. გთხოვთ, შეიყვანოთ მხოლოდ Y ან N.")
+-            }
+-        } while (answer.isNullOrEmpty() || answer.length > 1 || (answer != "Y" && answer != "N"))
+-        if (answer == "N") {
+-            println("დასასრული.")
+-            break
+-        }
+-    }
+-}
+-fun getUserInput(prompt: String): String {
+-    var input: String?
+-    do {
+-        print(prompt)
+-        input = readLine()
+-        if (input.isNullOrBlank()) {
+-            println("გთხოვთ, შეიყვანოთ ნებისმიერი მნიშვნელობა, რომ ველი ცარიელი არ იყოს.")
+-        }
+-    } while (input.isNullOrBlank())
+-    return input
+-}
+-fun findNumericPartOfString(string: String): String {
+-    var numericPartOfString: String = ""
+-    for (char in string!!) {
+-        if (char.isDigit()) {
+-            numericPartOfString += char
+-        }
+-    }
+-    return numericPartOfString
+-}
+-fun containsNumericDataOrNot(string: String): Boolean {
+-    if (!string.any { it.isDigit() }) {
+-        return false
+-    } else {
+-        return true
+-    }
+ }
+\ No newline at end of file

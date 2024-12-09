@@ -1,0 +1,19 @@
+<changelist name="Uncommitted_changes_before_Checkout_at_Sunday-08_December_2024_6_15_PM_[Changes]" date="1733667347949" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_Sunday-08_December_2024_6_15_PM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at Sunday-08 December 2024 6:15 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value=".gradle/8.7/checksums/checksums.lock" />
+    <option name="AFTER_PATH" value=".gradle/8.7/checksums/checksums.lock" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_Sunday-08_December_2024_6_15_PM_[Changes]/checksums.lock" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value=".gradle/8.7/fileHashes/fileHashes.lock" />
+    <option name="AFTER_PATH" value=".gradle/8.7/fileHashes/fileHashes.lock" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_Sunday-08_December_2024_6_15_PM_[Changes]/fileHashes.lock" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value=".gradle/8.7/fileHashes/fileHashes.bin" />
+    <option name="AFTER_PATH" value=".gradle/8.7/fileHashes/fileHashes.bin" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_Sunday-08_December_2024_6_15_PM_[Changes]/fileHashes.bin" />
+  </binary>
+</changelist>

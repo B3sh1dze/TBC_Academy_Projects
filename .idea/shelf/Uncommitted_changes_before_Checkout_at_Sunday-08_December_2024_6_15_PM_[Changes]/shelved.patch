@@ -1,0 +1,501 @@
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n    <string name=\"app_name\">MyFirsAndroidApp</string>\r\n    <string name=\"Email\">Email </string>\r\n    <string name=\"First_name\">First Name\\n</string>\r\n    <string name=\"Username\">Username\\n</string>\r\n    <string name=\"Last_name\">Last Name</string>\r\n    <string name=\"Age\">Age</string>\r\n    <string name=\"Save_Btn\">Save\\n</string>\r\n    <string name=\"Exit_Btn\">Exit</string>\r\n    <string name=\"Clear_btn\">Clear</string>\r\n    <string name=\"Profile_Info\">Profile Info</string>\r\n    <string name=\"Again\">Again</string>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+--- a/app/src/main/res/values/strings.xml	(revision cf3f8f832ec53c3e23c279a7207cc13a51ca955f)
++++ b/app/src/main/res/values/strings.xml	(date 1733665496347)
+@@ -1,13 +1,11 @@
+ <resources>
+     <string name="app_name">MyFirsAndroidApp</string>
+-    <string name="Email">Email </string>
+-    <string name="First_name">First Name\n</string>
+-    <string name="Username">Username\n</string>
+-    <string name="Last_name">Last Name</string>
++    <string name="Enter_Email">Enter Email </string>
+     <string name="Age">Age</string>
+-    <string name="Save_Btn">Save\n</string>
++    <string name="Save_User_Btn">Add User\n</string>
+     <string name="Exit_Btn">Exit</string>
+     <string name="Clear_btn">Clear</string>
+     <string name="Profile_Info">Profile Info</string>
+     <string name="Again">Again</string>
++    <string name="enter_full_name">Enter Full Name</string>
+ </resources>
+\ No newline at end of file
+Index: app/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    alias(libs.plugins.android.application)\r\n    alias(libs.plugins.kotlin.android)\r\n}\r\n\r\nandroid {\r\n    namespace = \"com.example.myfirsandroidapp\"\r\n    compileSdk = 35\r\n\r\n    defaultConfig {\r\n        applicationId = \"com.example.myfirsandroidapp\"\r\n        minSdk = 24\r\n        targetSdk = 34\r\n        versionCode = 1\r\n        versionName = \"1.0\"\r\n\r\n        testInstrumentationRunner = \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            isMinifyEnabled = false\r\n            proguardFiles(\r\n                getDefaultProguardFile(\"proguard-android-optimize.txt\"),\r\n                \"proguard-rules.pro\"\r\n            )\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility = JavaVersion.VERSION_1_8\r\n        targetCompatibility = JavaVersion.VERSION_1_8\r\n    }\r\n    kotlinOptions {\r\n        jvmTarget = \"1.8\"\r\n    }\r\n}\r\n\r\ndependencies {\r\n\r\n    implementation(libs.androidx.core.ktx)\r\n    implementation(libs.androidx.appcompat)\r\n    implementation(libs.material)\r\n    implementation(libs.androidx.activity)\r\n    implementation(libs.androidx.constraintlayout)\r\n    testImplementation(libs.junit)\r\n    androidTestImplementation(libs.androidx.junit)\r\n    androidTestImplementation(libs.androidx.espresso.core)\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+--- a/app/build.gradle.kts	(revision cf3f8f832ec53c3e23c279a7207cc13a51ca955f)
++++ b/app/build.gradle.kts	(date 1733666103535)
+@@ -7,6 +7,10 @@
+     namespace = "com.example.myfirsandroidapp"
+     compileSdk = 35
+ 
++    buildFeatures {
++        viewBinding = true
++    }
++
+     defaultConfig {
+         applicationId = "com.example.myfirsandroidapp"
+         minSdk = 24
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.appcompat.widget.LinearLayoutCompat xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:orientation=\"vertical\"\r\n    tools:context=\".MainActivity\">\r\n\r\n\r\n    <LinearLayout\r\n        android:id=\"@+id/ProfileInfoLayout\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:orientation=\"horizontal\"\r\n        android:layout_marginTop=\"40dp\"\r\n        android:layout_marginStart=\"20dp\"\r\n        android:layout_marginEnd=\"20dp\"\r\n        android:weightSum=\"2\" >\r\n\r\n        <TextView\r\n            android:id=\"@+id/ProfileInfoPrompt\"\r\n            android:layout_width=\"0dp\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_weight=\"2\"\r\n            android:gravity=\"center\"\r\n            android:text=\"@string/Profile_Info\"\r\n            android:background=\"@color/green\"\r\n            android:textSize=\"30sp\"\r\n            android:textColor=\"@color/black\" />\r\n    </LinearLayout>\r\n\r\n<LinearLayout\r\n    android:id=\"@+id/UserEmailLayout\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"wrap_content\"\r\n    android:orientation=\"horizontal\"\r\n    android:layout_marginTop=\"40dp\"\r\n    android:layout_marginStart=\"20dp\"\r\n    android:layout_marginEnd=\"20dp\"\r\n    android:weightSum=\"2\" >\r\n\r\n    <TextView\r\n        android:id=\"@+id/UserEmailInputPrompt\"\r\n        android:layout_width=\"118dp\"\r\n        android:layout_height=\"50dp\"\r\n        android:layout_marginEnd=\"10dp\"\r\n        android:layout_weight=\"0.6\"\r\n        android:gravity=\"center_vertical\"\r\n        android:paddingLeft=\"10dp\"\r\n        android:text=\"User Email\"\r\n        android:background=\"@color/backgroundColor\"\r\n        android:textSize=\"20sp\"\r\n        android:textColor=\"@color/black\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/UserEmailinput\"\r\n        android:layout_width=\"229dp\"\r\n        android:layout_height=\"50dp\"\r\n        android:layout_marginStart=\"10dp\"\r\n        android:layout_weight=\"1.4\"\r\n        android:background=\"@color/editTextBack\"\r\n        android:hint=\"@string/Email\"\r\n        android:imeOptions=\"actionNext\"\r\n        android:paddingStart=\"10dp\"\r\n        android:singleLine=\"true\"\r\n        android:textSize=\"20sp\"\r\n        android:textColor=\"@color/black\" />\r\n</LinearLayout>\r\n\r\n    <LinearLayout\r\n        android:id=\"@+id/UsernameLayout\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:orientation=\"horizontal\"\r\n        android:layout_marginTop=\"30dp\"\r\n        android:layout_marginStart=\"20dp\"\r\n        android:layout_marginEnd=\"20dp\"\r\n        android:weightSum=\"2\" >\r\n\r\n    <TextView\r\n        android:id=\"@+id/UsernamerInputPrompt\"\r\n        android:layout_width=\"118dp\"\r\n        android:layout_height=\"50dp\"\r\n        android:layout_marginEnd=\"10dp\"\r\n        android:layout_weight=\"0.6\"\r\n        android:background=\"@color/backgroundColor\"\r\n        android:gravity=\"center_vertical\"\r\n        android:paddingStart=\"10dp\"\r\n        android:text=\"Username\"\r\n        android:textSize=\"20sp\"\r\n        android:textColor=\"@color/black\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/UsernameInput\"\r\n        android:layout_width=\"229dp\"\r\n        android:layout_height=\"50dp\"\r\n        android:layout_marginStart=\"10dp\"\r\n        android:layout_weight=\"1.4\"\r\n        android:background=\"@color/editTextBack\"\r\n        android:hint=\"@string/Username\"\r\n        android:imeOptions=\"actionNext\"\r\n        android:paddingStart=\"10dp\"\r\n        android:singleLine=\"true\"\r\n        android:textSize=\"20sp\"\r\n        android:textColor=\"@color/black\" />\r\n</LinearLayout>\r\n\r\n    <LinearLayout\r\n        android:id=\"@+id/FirstNameLayout\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:orientation=\"horizontal\"\r\n        android:layout_marginTop=\"30dp\"\r\n        android:layout_marginStart=\"20dp\"\r\n        android:layout_marginEnd=\"20dp\"\r\n        android:weightSum=\"2\" >\r\n\r\n        <TextView\r\n            android:id=\"@+id/FirstNameInputPrompt\"\r\n            android:layout_width=\"118dp\"\r\n            android:layout_height=\"50dp\"\r\n            android:layout_marginEnd=\"10dp\"\r\n            android:layout_weight=\"0.6\"\r\n            android:gravity=\"center_vertical\"\r\n            android:paddingStart=\"10dp\"\r\n            android:background=\"@color/backgroundColor\"\r\n            android:text=\"First name\"\r\n            android:textSize=\"20sp\"\r\n            android:textColor=\"@color/black\" />\r\n\r\n        <EditText\r\n            android:id=\"@+id/FirstNameInput\"\r\n            android:layout_width=\"229dp\"\r\n            android:layout_height=\"50dp\"\r\n            android:layout_marginStart=\"10dp\"\r\n            android:layout_weight=\"1.4\"\r\n            android:background=\"@color/editTextBack\"\r\n            android:hint=\"@string/First_name\"\r\n            android:imeOptions=\"actionNext\"\r\n            android:paddingStart=\"10dp\"\r\n            android:singleLine=\"true\"\r\n            android:textSize=\"20sp\"\r\n            android:textColor=\"@color/black\" />\r\n    </LinearLayout>\r\n\r\n    <LinearLayout\r\n        android:id=\"@+id/LastNameLayout\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:orientation=\"horizontal\"\r\n        android:layout_marginTop=\"30dp\"\r\n        android:layout_marginStart=\"20dp\"\r\n        android:layout_marginEnd=\"20dp\"\r\n        android:weightSum=\"2\" >\r\n\r\n        <TextView\r\n            android:id=\"@+id/LastNameInputPrompt\"\r\n            android:layout_width=\"118dp\"\r\n            android:layout_height=\"50dp\"\r\n            android:layout_marginEnd=\"10dp\"\r\n            android:layout_weight=\"0.6\"\r\n            android:gravity=\"center_vertical\"\r\n            android:paddingStart=\"10dp\"\r\n            android:background=\"@color/backgroundColor\"\r\n            android:text=\"Last name\"\r\n            android:textSize=\"20sp\"\r\n            android:textColor=\"@color/black\" />\r\n\r\n        <EditText\r\n            android:id=\"@+id/LastNameInput\"\r\n            android:layout_width=\"229dp\"\r\n            android:layout_height=\"50dp\"\r\n            android:layout_marginStart=\"10dp\"\r\n            android:layout_weight=\"1.4\"\r\n            android:background=\"@color/editTextBack\"\r\n            android:hint=\"@string/Last_name\"\r\n            android:imeOptions=\"actionNext\"\r\n            android:paddingStart=\"10dp\"\r\n            android:singleLine=\"true\"\r\n            android:shadowColor=\"@color/backgroundColor\"\r\n            android:textSize=\"20sp\"\r\n            android:textColor=\"@color/black\" />\r\n    </LinearLayout>\r\n\r\n    <LinearLayout\r\n        android:id=\"@+id/AgeLayout\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:orientation=\"horizontal\"\r\n        android:layout_marginTop=\"30dp\"\r\n        android:layout_marginStart=\"20dp\"\r\n        android:layout_marginEnd=\"20dp\"\r\n        android:weightSum=\"2\" >\r\n\r\n        <TextView\r\n            android:id=\"@+id/AgeInputPrompt\"\r\n            android:layout_width=\"118dp\"\r\n            android:layout_height=\"50dp\"\r\n            android:layout_marginEnd=\"10dp\"\r\n            android:layout_weight=\"0.6\"\r\n            android:gravity=\"center_vertical\"\r\n            android:paddingStart=\"10dp\"\r\n            android:text=\"Age\"\r\n            android:background=\"@color/backgroundColor\"\r\n            android:textSize=\"20sp\"\r\n            android:textColor=\"@color/black\" />\r\n\r\n        <EditText\r\n            android:id=\"@+id/AgeInput\"\r\n            android:layout_width=\"229dp\"\r\n            android:layout_height=\"50dp\"\r\n            android:layout_marginStart=\"10dp\"\r\n            android:layout_weight=\"1.4\"\r\n            android:background=\"@color/editTextBack\"\r\n            android:hint=\"@string/Age\"\r\n            android:imeOptions=\"actionNext\"\r\n            android:paddingStart=\"10dp\"\r\n            android:singleLine=\"true\"\r\n            android:textSize=\"20sp\"\r\n            android:textColor=\"@color/black\" />\r\n    </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:id=\"@+id/SaveBtnLayout\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"horizontal\"\r\n                android:layout_marginTop=\"30dp\"\r\n                android:layout_marginStart=\"20dp\"\r\n                android:layout_marginEnd=\"20dp\"\r\n                android:weightSum=\"2\" >\r\n\r\n                <Button\r\n                    android:id=\"@+id/SaveButton\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"match_parent\"\r\n                    android:text=\"@string/Save_Btn\"\r\n                    android:textSize=\"20sp\"\r\n                    android:gravity=\"center\"\r\n                    android:layout_weight=\"1\"\r\n                    android:layout_marginEnd=\"2dp\"\r\n                    />\r\n\r\n                <Button\r\n                    android:id=\"@+id/ClearButton\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_weight=\"1\"\r\n                    android:gravity=\"center\"\r\n                    android:text=\"@string/Clear_btn\"\r\n                    android:textSize=\"20sp\"\r\n                    android:layout_marginLeft=\"2dp\"/>\r\n            </LinearLayout>\r\n\r\n\r\n</androidx.appcompat.widget.LinearLayoutCompat>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+--- a/app/src/main/res/layout/activity_main.xml	(revision cf3f8f832ec53c3e23c279a7207cc13a51ca955f)
++++ b/app/src/main/res/layout/activity_main.xml	(date 1733665624010)
+@@ -1,257 +1,42 @@
+-<?xml version="1.0" encoding="utf-8"?>
+ <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:orientation="vertical"
+-    tools:context=".MainActivity">
+-
+-
+-    <LinearLayout
+-        android:id="@+id/ProfileInfoLayout"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:orientation="horizontal"
+-        android:layout_marginTop="40dp"
+-        android:layout_marginStart="20dp"
+-        android:layout_marginEnd="20dp"
+-        android:weightSum="2" >
+-
+-        <TextView
+-            android:id="@+id/ProfileInfoPrompt"
+-            android:layout_width="0dp"
+-            android:layout_height="match_parent"
+-            android:layout_weight="2"
+-            android:gravity="center"
+-            android:text="@string/Profile_Info"
+-            android:background="@color/green"
+-            android:textSize="30sp"
+-            android:textColor="@color/black" />
+-    </LinearLayout>
++    android:background="@color/black">
+ 
+-<LinearLayout
+-    android:id="@+id/UserEmailLayout"
+-    android:layout_width="match_parent"
+-    android:layout_height="wrap_content"
+-    android:orientation="horizontal"
+-    android:layout_marginTop="40dp"
+-    android:layout_marginStart="20dp"
+-    android:layout_marginEnd="20dp"
+-    android:weightSum="2" >
+ 
+-    <TextView
+-        android:id="@+id/UserEmailInputPrompt"
+-        android:layout_width="118dp"
+-        android:layout_height="50dp"
+-        android:layout_marginEnd="10dp"
+-        android:layout_weight="0.6"
+-        android:gravity="center_vertical"
+-        android:paddingLeft="10dp"
+-        android:text="User Email"
+-        android:background="@color/backgroundColor"
+-        android:textSize="20sp"
+-        android:textColor="@color/black" />
+-
+-    <EditText
+-        android:id="@+id/UserEmailinput"
+-        android:layout_width="229dp"
++    <androidx.appcompat.widget.AppCompatEditText
++        android:id="@+id/FullNameInputField"
++        android:layout_width="220dp"
+         android:layout_height="50dp"
+-        android:layout_marginStart="10dp"
+-        android:layout_weight="1.4"
+-        android:background="@color/editTextBack"
+-        android:hint="@string/Email"
+-        android:imeOptions="actionNext"
+-        android:paddingStart="10dp"
+-        android:singleLine="true"
+-        android:textSize="20sp"
+-        android:textColor="@color/black" />
+-</LinearLayout>
+-
+-    <LinearLayout
+-        android:id="@+id/UsernameLayout"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:orientation="horizontal"
++        android:hint="@string/enter_full_name"
++        android:background="@color/white"
++        android:paddingStart="18dp"
+         android:layout_marginTop="30dp"
+-        android:layout_marginStart="20dp"
+-        android:layout_marginEnd="20dp"
+-        android:weightSum="2" >
++        android:textColor="@color/green"
++        android:layout_marginStart="80dp"
++        android:layout_marginEnd="100dp"
++        android:textSize="25sp"/>
+ 
+-    <TextView
+-        android:id="@+id/UsernamerInputPrompt"
+-        android:layout_width="118dp"
++    <androidx.appcompat.widget.AppCompatEditText
++        android:id="@+id/EmailInputField"
++        android:layout_width="220dp"
+         android:layout_height="50dp"
+-        android:layout_marginEnd="10dp"
+-        android:layout_weight="0.6"
+-        android:background="@color/backgroundColor"
+-        android:gravity="center_vertical"
+-        android:paddingStart="10dp"
+-        android:text="Username"
+-        android:textSize="20sp"
+-        android:textColor="@color/black" />
++        android:paddingStart="40dp"
++        android:background="@color/white"
++        android:textColor="@color/green"
++        android:hint="@string/Enter_Email"
++        android:layout_marginStart="80dp"
++        android:layout_marginEnd="150dp"
++        android:textSize="25sp"/>
+ 
+-    <EditText
+-        android:id="@+id/UsernameInput"
+-        android:layout_width="229dp"
+-        android:layout_height="50dp"
+-        android:layout_marginStart="10dp"
+-        android:layout_weight="1.4"
+-        android:background="@color/editTextBack"
+-        android:hint="@string/Username"
+-        android:imeOptions="actionNext"
+-        android:paddingStart="10dp"
+-        android:singleLine="true"
+-        android:textSize="20sp"
+-        android:textColor="@color/black" />
+-</LinearLayout>
+-
+-    <LinearLayout
+-        android:id="@+id/FirstNameLayout"
+-        android:layout_width="match_parent"
++    <androidx.appcompat.widget.AppCompatButton
++        android:id="@+id/AddUserBtn"
++        android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:orientation="horizontal"
++        android:text="@string/Save_User_Btn"
++        android:layout_marginStart="150dp"
+         android:layout_marginTop="30dp"
+-        android:layout_marginStart="20dp"
+-        android:layout_marginEnd="20dp"
+-        android:weightSum="2" >
+-
+-        <TextView
+-            android:id="@+id/FirstNameInputPrompt"
+-            android:layout_width="118dp"
+-            android:layout_height="50dp"
+-            android:layout_marginEnd="10dp"
+-            android:layout_weight="0.6"
+-            android:gravity="center_vertical"
+-            android:paddingStart="10dp"
+-            android:background="@color/backgroundColor"
+-            android:text="First name"
+-            android:textSize="20sp"
+-            android:textColor="@color/black" />
+-
+-        <EditText
+-            android:id="@+id/FirstNameInput"
+-            android:layout_width="229dp"
+-            android:layout_height="50dp"
+-            android:layout_marginStart="10dp"
+-            android:layout_weight="1.4"
+-            android:background="@color/editTextBack"
+-            android:hint="@string/First_name"
+-            android:imeOptions="actionNext"
+-            android:paddingStart="10dp"
+-            android:singleLine="true"
+-            android:textSize="20sp"
+-            android:textColor="@color/black" />
+-    </LinearLayout>
+-
+-    <LinearLayout
+-        android:id="@+id/LastNameLayout"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:orientation="horizontal"
+-        android:layout_marginTop="30dp"
+-        android:layout_marginStart="20dp"
+-        android:layout_marginEnd="20dp"
+-        android:weightSum="2" >
+-
+-        <TextView
+-            android:id="@+id/LastNameInputPrompt"
+-            android:layout_width="118dp"
+-            android:layout_height="50dp"
+-            android:layout_marginEnd="10dp"
+-            android:layout_weight="0.6"
+-            android:gravity="center_vertical"
+-            android:paddingStart="10dp"
+-            android:background="@color/backgroundColor"
+-            android:text="Last name"
+-            android:textSize="20sp"
+-            android:textColor="@color/black" />
+-
+-        <EditText
+-            android:id="@+id/LastNameInput"
+-            android:layout_width="229dp"
+-            android:layout_height="50dp"
+-            android:layout_marginStart="10dp"
+-            android:layout_weight="1.4"
+-            android:background="@color/editTextBack"
+-            android:hint="@string/Last_name"
+-            android:imeOptions="actionNext"
+-            android:paddingStart="10dp"
+-            android:singleLine="true"
+-            android:shadowColor="@color/backgroundColor"
+-            android:textSize="20sp"
+-            android:textColor="@color/black" />
+-    </LinearLayout>
+-
+-    <LinearLayout
+-        android:id="@+id/AgeLayout"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:orientation="horizontal"
+-        android:layout_marginTop="30dp"
+-        android:layout_marginStart="20dp"
+-        android:layout_marginEnd="20dp"
+-        android:weightSum="2" >
+-
+-        <TextView
+-            android:id="@+id/AgeInputPrompt"
+-            android:layout_width="118dp"
+-            android:layout_height="50dp"
+-            android:layout_marginEnd="10dp"
+-            android:layout_weight="0.6"
+-            android:gravity="center_vertical"
+-            android:paddingStart="10dp"
+-            android:text="Age"
+-            android:background="@color/backgroundColor"
+-            android:textSize="20sp"
+-            android:textColor="@color/black" />
+-
+-        <EditText
+-            android:id="@+id/AgeInput"
+-            android:layout_width="229dp"
+-            android:layout_height="50dp"
+-            android:layout_marginStart="10dp"
+-            android:layout_weight="1.4"
+-            android:background="@color/editTextBack"
+-            android:hint="@string/Age"
+-            android:imeOptions="actionNext"
+-            android:paddingStart="10dp"
+-            android:singleLine="true"
+-            android:textSize="20sp"
+-            android:textColor="@color/black" />
+-    </LinearLayout>
+-
+-            <LinearLayout
+-                android:id="@+id/SaveBtnLayout"
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:orientation="horizontal"
+-                android:layout_marginTop="30dp"
+-                android:layout_marginStart="20dp"
+-                android:layout_marginEnd="20dp"
+-                android:weightSum="2" >
+-
+-                <Button
+-                    android:id="@+id/SaveButton"
+-                    android:layout_width="match_parent"
+-                    android:layout_height="match_parent"
+-                    android:text="@string/Save_Btn"
+-                    android:textSize="20sp"
+-                    android:gravity="center"
+-                    android:layout_weight="1"
+-                    android:layout_marginEnd="2dp"
+-                    />
++        android:gravity="center" />
+ 
+-                <Button
+-                    android:id="@+id/ClearButton"
+-                    android:layout_width="match_parent"
+-                    android:layout_height="wrap_content"
+-                    android:layout_weight="1"
+-                    android:gravity="center"
+-                    android:text="@string/Clear_btn"
+-                    android:textSize="20sp"
+-                    android:layout_marginLeft="2dp"/>
+-            </LinearLayout>
+-
+-
+-</androidx.appcompat.widget.LinearLayoutCompat>
++</androidx.appcompat.widget.LinearLayoutCompat>
+\ No newline at end of file
+Index: app/src/main/java/com/example/myfirsandroidapp/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/myfirsandroidapp/MainActivity.kt b/app/src/main/java/com/example/myfirsandroidapp/MainActivity.kt
+--- a/app/src/main/java/com/example/myfirsandroidapp/MainActivity.kt	(revision cf3f8f832ec53c3e23c279a7207cc13a51ca955f)
++++ b/app/src/main/java/com/example/myfirsandroidapp/MainActivity.kt	(date 1733666177361)
+@@ -1,0 +1,31 @@
++package com.example.myfirsandroidapp
++
++import android.annotation.SuppressLint
++import android.content.Context
++import android.os.Bundle
++import android.util.Log
++import android.view.View
++import android.widget.EditText
++import android.widget.TextView
++import android.widget.Toast
++import androidx.activity.enableEdgeToEdge
++import androidx.appcompat.app.AppCompatActivity
++import androidx.appcompat.widget.AppCompatButton
++import androidx.appcompat.widget.AppCompatEditText
++import androidx.appcompat.widget.AppCompatTextView
++import androidx.core.view.ViewCompat
++import androidx.core.view.WindowInsetsCompat
++import com.example.myfirsandroidapp.databinding.ActivityMainBinding
++import java.lang.Double.parseDouble
++import java.lang.Integer.parseInt
++
++class MainActivity : AppCompatActivity() {
++
++    private lateinit var binding: ActivityMainBinding
++
++    override fun onCreate(savedInstanceState: Bundle?) {
++        super.onCreate(savedInstanceState)
++
++
++    }
++}
+\ No newline at end of file
+Index: app/src/main/java/com/example/myfirsandroidapp/User.kt
+===================================================================
+diff --git a/app/src/main/java/com/example/myfirsandroidapp/User.kt b/app/src/main/java/com/example/myfirsandroidapp/User.kt
+deleted file mode 100644
+--- a/app/src/main/java/com/example/myfirsandroidapp/User.kt	(revision cf3f8f832ec53c3e23c279a7207cc13a51ca955f)
++++ /dev/null	(revision cf3f8f832ec53c3e23c279a7207cc13a51ca955f)
+@@ -1,5 +0,0 @@
+-package com.example.myfirsandroidapp
+-
+-class User(val email: String, val username: String, val firstName: String, val lastName: String, val age: Int) {
+-
+-}
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AndroidLayouts\">\r\n    <shared>\r\n      <config />\r\n    </shared>\r\n    <layouts>\r\n      <layout url=\"file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml\">\r\n        <config>\r\n          <theme>@style/Theme.MyFirsAndroidApp</theme>\r\n        </config>\r\n      </layout>\r\n      <layout url=\"file://$PROJECT_DIR$/app/src/main/res/layout/after_save_btn_layout.xml\">\r\n        <config>\r\n          <theme>@style/Theme.MyFirsAndroidApp</theme>\r\n        </config>\r\n      </layout>\r\n      <layout url=\"file://$PROJECT_DIR$/app/src/main/res/layout/test.xml\">\r\n        <config>\r\n          <theme>@style/Theme.MyFirsAndroidApp</theme>\r\n        </config>\r\n      </layout>\r\n    </layouts>\r\n  </component>\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"NONE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"c4742344-6c4e-4188-938b-c26d3af5bac0\" name=\"Changes\" comment=\"Update\">\r\n      <change afterPath=\"$PROJECT_DIR$/app/src/main/java/com/example/myfirsandroidapp/User.kt\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/app/src/main/res/layout/after_save_btn_layout.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/deploymentTargetSelector.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/deploymentTargetSelector.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/src/main/java/com/example/myfirsandroidapp/MainActivity.kt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/src/main/java/com/example/myfirsandroidapp/MainActivity.kt\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/src/main/res/values/colors.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/src/main/res/values/colors.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/src/main/res/values/strings.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/src/main/res/values/strings.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ClangdSettings\">\r\n    <option name=\"formatViaClangd\" value=\"false\" />\r\n  </component>\r\n  <component name=\"ExecutionTargetManager\" SELECTED_TARGET=\"device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\\Users\\TheMostEvilPC\\.android\\avd\\Pixel_7_Pro_API_35.avd)]\" />\r\n  <component name=\"ExternalProjectsData\">\r\n    <projectState path=\"$PROJECT_DIR$\">\r\n      <ProjectState />\r\n    </projectState>\r\n  </component>\r\n  <component name=\"ExternalProjectsManager\">\r\n    <system id=\"GRADLE\">\r\n      <state>\r\n        <task path=\"$PROJECT_DIR$/app\">\r\n          <activation />\r\n        </task>\r\n        <projects_view>\r\n          <tree_state>\r\n            <expand>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"MyFirsAndroidApp\" type=\"f1a62948:ProjectNode\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"MyFirsAndroidApp\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"app\" type=\"2d1252cf:ModuleNode\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"MyFirsAndroidApp\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"app\" type=\"2d1252cf:ModuleNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"MyFirsAndroidApp\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"app\" type=\"2d1252cf:ModuleNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n                <item name=\"other\" type=\"c8890929:TasksNode$1\" />\r\n              </path>\r\n            </expand>\r\n            <select />\r\n          </tree_state>\r\n        </projects_view>\r\n      </state>\r\n    </system>\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Kotlin Class\" />\r\n        <option value=\"layoutResourceFile\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <favorite-branches>\r\n      <branch-storage>\r\n        <map>\r\n          <entry type=\"LOCAL\">\r\n            <value>\r\n              <list>\r\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"FourthAssignment\" />\r\n              </list>\r\n            </value>\r\n          </entry>\r\n        </map>\r\n      </branch-storage>\r\n    </favorite-branches>\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"ThirdAssignment\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;B3sh1dze&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/B3sh1dze/TBC_Academy_Projects.git&quot;,\r\n    &quot;accountId&quot;: &quot;a764f023-2f65-4708-b46d-d877abdda30e&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 3\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2picB2KqHd2uf3RlbO1KEi4fhKb\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Android App.app.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.cidr.known.project.marker\": \"true\",\r\n    \"RunOnceActivity.readMode.enableVisualFormatting\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"cf.first.check.clang-format\": \"false\",\r\n    \"cidr.known.project.marker\": \"true\",\r\n    \"com.google.services.firebase.aqiPopupShown\": \"true\",\r\n    \"git-widget-placeholder\": \"#1 on FourthAssignment\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_directory_selection\": \"D:/Android projects/TBC_Academy_Projects/app/src/main/java\",\r\n    \"last_opened_file_path\": \"D:/Android projects/TBC_Academy_Projects\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.17\",\r\n    \"project.structure.side.proportion\": \"0.2\",\r\n    \"show.do.not.copy.http.proxy.settings.to.gradle\": \"true\"\r\n  },\r\n  \"keyToStringList\": {\r\n    \"kotlin-gradle-user-dirs\": [\r\n      \"C:\\\\Users\\\\TheMostEvilPC\\\\.gradle\"\r\n    ]\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"app\" type=\"AndroidRunConfigurationType\" factoryName=\"Android App\" activateToolWindowBeforeRun=\"false\">\r\n      <module name=\"MyFirsAndroidApp.app.main\" />\r\n      <option name=\"DEPLOY\" value=\"true\" />\r\n      <option name=\"DEPLOY_APK_FROM_BUNDLE\" value=\"false\" />\r\n      <option name=\"DEPLOY_AS_INSTANT\" value=\"false\" />\r\n      <option name=\"ARTIFACT_NAME\" value=\"\" />\r\n      <option name=\"PM_INSTALL_OPTIONS\" value=\"\" />\r\n      <option name=\"ALL_USERS\" value=\"false\" />\r\n      <option name=\"ALWAYS_INSTALL_WITH_PM\" value=\"false\" />\r\n      <option name=\"CLEAR_APP_STORAGE\" value=\"false\" />\r\n      <option name=\"DYNAMIC_FEATURES_DISABLED_LIST\" value=\"\" />\r\n      <option name=\"ACTIVITY_EXTRA_FLAGS\" value=\"\" />\r\n      <option name=\"MODE\" value=\"default_activity\" />\r\n      <option name=\"CLEAR_LOGCAT\" value=\"false\" />\r\n      <option name=\"SHOW_LOGCAT_AUTOMATICALLY\" value=\"false\" />\r\n      <option name=\"TARGET_SELECTION_MODE\" value=\"DEVICE_AND_SNAPSHOT_COMBO_BOX\" />\r\n      <option name=\"SELECTED_CLOUD_MATRIX_CONFIGURATION_ID\" value=\"-1\" />\r\n      <option name=\"SELECTED_CLOUD_MATRIX_PROJECT_ID\" value=\"\" />\r\n      <option name=\"DEBUGGER_TYPE\" value=\"Java\" />\r\n      <Auto>\r\n        <option name=\"USE_JAVA_AWARE_DEBUGGER\" value=\"false\" />\r\n        <option name=\"SHOW_STATIC_VARS\" value=\"true\" />\r\n        <option name=\"WORKING_DIR\" value=\"\" />\r\n        <option name=\"TARGET_LOGGING_CHANNELS\" value=\"lldb process:gdb-remote packets\" />\r\n        <option name=\"SHOW_OPTIMIZED_WARNING\" value=\"true\" />\r\n        <option name=\"ATTACH_ON_WAIT_FOR_DEBUGGER\" value=\"false\" />\r\n        <option name=\"DEBUG_SANDBOX_SDK\" value=\"false\" />\r\n      </Auto>\r\n      <Hybrid>\r\n        <option name=\"USE_JAVA_AWARE_DEBUGGER\" value=\"false\" />\r\n        <option name=\"SHOW_STATIC_VARS\" value=\"true\" />\r\n        <option name=\"WORKING_DIR\" value=\"\" />\r\n        <option name=\"TARGET_LOGGING_CHANNELS\" value=\"lldb process:gdb-remote packets\" />\r\n        <option name=\"SHOW_OPTIMIZED_WARNING\" value=\"true\" />\r\n        <option name=\"ATTACH_ON_WAIT_FOR_DEBUGGER\" value=\"false\" />\r\n        <option name=\"DEBUG_SANDBOX_SDK\" value=\"false\" />\r\n      </Hybrid>\r\n      <Java>\r\n        <option name=\"ATTACH_ON_WAIT_FOR_DEBUGGER\" value=\"false\" />\r\n        <option name=\"DEBUG_SANDBOX_SDK\" value=\"false\" />\r\n      </Java>\r\n      <Native>\r\n        <option name=\"USE_JAVA_AWARE_DEBUGGER\" value=\"false\" />\r\n        <option name=\"SHOW_STATIC_VARS\" value=\"true\" />\r\n        <option name=\"WORKING_DIR\" value=\"\" />\r\n        <option name=\"TARGET_LOGGING_CHANNELS\" value=\"lldb process:gdb-remote packets\" />\r\n        <option name=\"SHOW_OPTIMIZED_WARNING\" value=\"true\" />\r\n        <option name=\"ATTACH_ON_WAIT_FOR_DEBUGGER\" value=\"false\" />\r\n        <option name=\"DEBUG_SANDBOX_SDK\" value=\"false\" />\r\n      </Native>\r\n      <Profilers>\r\n        <option name=\"ADVANCED_PROFILING_ENABLED\" value=\"false\" />\r\n        <option name=\"STARTUP_PROFILING_ENABLED\" value=\"false\" />\r\n        <option name=\"STARTUP_CPU_PROFILING_ENABLED\" value=\"false\" />\r\n        <option name=\"STARTUP_CPU_PROFILING_CONFIGURATION_NAME\" value=\"Java/Kotlin Method Sample (legacy)\" />\r\n        <option name=\"STARTUP_NATIVE_MEMORY_PROFILING_ENABLED\" value=\"false\" />\r\n        <option name=\"NATIVE_MEMORY_SAMPLE_RATE_BYTES\" value=\"2048\" />\r\n      </Profilers>\r\n      <option name=\"DEEP_LINK\" value=\"\" />\r\n      <option name=\"ACTIVITY_CLASS\" value=\"\" />\r\n      <option name=\"SEARCH_ACTIVITY_IN_GLOBAL_SCOPE\" value=\"false\" />\r\n      <option name=\"SKIP_ACTIVITY_VALIDATION\" value=\"false\" />\r\n      <method v=\"2\">\r\n        <option name=\"Android.Gradle.BeforeRunTask\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"c4742344-6c4e-4188-938b-c26d3af5bac0\" name=\"Changes\" comment=\"\" />\r\n      <created>1733252197936</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1733252197936</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Update\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733253909923</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733253909923</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Update\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733279549775</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733279549775</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Update\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733306617621</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733306617621</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Update\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733306926418</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733306926418</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Update\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Update\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision cf3f8f832ec53c3e23c279a7207cc13a51ca955f)
++++ b/.idea/workspace.xml	(date 1733666154272)
+@@ -15,11 +15,6 @@
+           <theme>@style/Theme.MyFirsAndroidApp</theme>
+         </config>
+       </layout>
+-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/test.xml">
+-        <config>
+-          <theme>@style/Theme.MyFirsAndroidApp</theme>
+-        </config>
+-      </layout>
+     </layouts>
+   </component>
+   <component name="AutoImportSettings">
+@@ -27,19 +22,16 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="c4742344-6c4e-4188-938b-c26d3af5bac0" name="Changes" comment="Update">
+-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myfirsandroidapp/User.kt" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/after_save_btn_layout.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/8.7/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/checksums/checksums.lock" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myfirsandroidapp/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myfirsandroidapp/MainActivity.kt" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myfirsandroidapp/User.kt" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -118,7 +110,7 @@
+     </favorite-branches>
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="ThirdAssignment" />
++        <entry key="$PROJECT_DIR$" value="FourthAssignment" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -156,7 +148,7 @@
+     "cf.first.check.clang-format": "false",
+     "cidr.known.project.marker": "true",
+     "com.google.services.firebase.aqiPopupShown": "true",
+-    "git-widget-placeholder": "#1 on FourthAssignment",
++    "git-widget-placeholder": "FifthAssignment",
+     "kotlin-language-version-configured": "true",
+     "last_directory_selection": "D:/Android projects/TBC_Academy_Projects/app/src/main/java",
+     "last_opened_file_path": "D:/Android projects/TBC_Academy_Projects",
+@@ -280,7 +272,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1733306926418</updated>
+     </task>
+-    <option name="localTasksCounter" value="5" />
++    <task id="LOCAL-00005" summary="Update">
++      <option name="closed" value="true" />
++      <created>1733664394293</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1733664394293</updated>
++    </task>
++    <option name="localTasksCounter" value="6" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -288,7 +288,19 @@
+       <map>
+         <entry key="MAIN">
+           <value>
+-            <State />
++            <State>
++              <option name="FILTERS">
++                <map>
++                  <entry key="branch">
++                    <value>
++                      <list>
++                        <option value="SecondAssignment" />
++                      </list>
++                    </value>
++                  </entry>
++                </map>
++              </option>
++            </State>
+           </value>
+         </entry>
+       </map>
