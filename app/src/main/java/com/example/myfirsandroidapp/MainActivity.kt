@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         outputBtn.setOnClickListener {
             binding.tvShowAnagrams.text = lengthToStringsMap.toString()
         }
-
         clearBtn.setOnClickListener {
             anagrams.clear()
             lengthToStringsMap.clear()
