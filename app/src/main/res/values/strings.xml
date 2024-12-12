@@ -1,13 +1,15 @@
 <resources>
-    <string name="app_name">MyAppForWorking</string>
-    <string name="enter_full_name">Enter Full Name\n</string>
-    <string name="Enter_Email">Enter Email\n</string>
-    <string name="Save_User_Btn">Add User</string>
-    <string name="Users_Count">Users -> @</string>
-    <string name="test">test\t</string>
-    <string name="Email_Input">Enter Email\n</string>
-    <string name="get_User_Info">get user info\n</string>
-    <string name="email_input">Enter Email\n</string>
-    <string name="get_user_info">get user info</string>
-    <string name="save_user_btn">Add User</string>
+    <string name="app_name">OnlyThirdScreen</string>
+    <string name="image_description">test</string>
+    <string name="andes_mountains">Andes Mountains</string>
+    <string name="price">Price\n</string>
+    <string name="South_America">South, America</string>
+    <string name="eight_hours">8 hours</string>
+    <string name="gradus">16 C</string>
+    <string name="grade">4.5</string>
+    <string name="overview">Overview\n</string>
+    <string name="details">Details\n</string>
+    <string name="info">"This vast mountain range is renowned for its remarkable diversity in terms of topography and climate. It features towering peaks, active volcanoes, deep canyons, expansive plateaus, and lush valleys. The Andes are also home to "</string>
+    <string name="book_now">Book Now\t\t\t\t</string>
+    <string name="real_price">$230</string>
 </resources>

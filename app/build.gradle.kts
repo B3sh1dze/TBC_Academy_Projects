@@ -4,15 +4,15 @@ plugins {
 }
 
 android {
+    namespace = "com.example.onlythirdscreen"
+    compileSdk = 35
 
     buildFeatures {
         viewBinding = true
     }
-    namespace = "com.example.myappforworking"
-    compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.myappforworking"
+        applicationId = "com.example.onlythirdscreen"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
