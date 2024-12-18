@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">MyFirsAndroidApp</string>
+    <string name="app_name">MerveDavaleba</string>
+    <string name="email">Email</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="age">Age</string>
+    <string name="status_waiting_for_action">Status: Waiting for Action</string>
+    <string name="active_users_0">Active Users: </string>
+    <string name="deleted_users_0">Deleted Users: </string>
+    <string name="add_user">Add User</string>
+    <string name="remove_user">Remove User</string>
+    <string name="update_user">Update User</string>
 </resources>

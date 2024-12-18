@@ -1,113 +1,158 @@
 package com.example.myfirsandroidapp
 
-import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.AppCompatEditText
-import androidx.appcompat.widget.AppCompatTextView
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.core.content.ContextCompat
+import com.example.myfirsandroidapp.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
-    @SuppressLint("MissingInflatedId", "WrongViewCast")
+    private lateinit var binding: ActivityMainBinding
+    private val users = mutableListOf<User>()
+    private var deletedUsers = 0
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        val user = User(
+            binding.etFirstName.text.toString(),
+            binding.etLastName.text.toString(),
+            binding.etEmail.text.toString(),
+            binding.etAge.text.toString().toIntOrNull() ?: 0
+        )
 
-        val inputButton: AppCompatButton = findViewById(R.id.ClickButton)
-        val inputText: AppCompatEditText = findViewById(R.id.NumberInputField)
-        val outputext: AppCompatTextView = findViewById(R.id.TextDisplay)
+        binding.btnAddUser.setOnClickListener {
+            addUser()
+        }
+        binding.btnRemoveUser.setOnClickListener {
+            removeUser()
+        }
+        binding.btnUpdateUser.setOnClickListener {
+            updateUser(user)
+        }
+    }
 
-        inputButton.setOnClickListener {
-            val inputValue = inputText.text.toString()
+    private fun updateUser(user: User) {
 
-            if (inputValue.isNotEmpty() && inputValue.toIntOrNull() != null) {
-                val number = inputValue.toInt()
-                val result = getStringOfNumbersInGeorgian(number)
-                outputext.text = result
-            } else {
-                outputext.text = "Wrong input."
+        if(ifUserExists(user)) {
+            user.firstName = binding.etFirstName.text.toString()
+            user.lastName = binding.etLastName.text.toString()
+            user.email = binding.etEmail.text.toString()
+            user.age = binding.etAge.text.toString().toIntOrNull() ?: 0
+        }
+    }
+
+    private fun removeUser() {
+        val user = User(
+            binding.etFirstName.text.toString(),
+            binding.etLastName.text.toString(),
+            binding.etEmail.text.toString(),
+            binding.etAge.text.toString().toIntOrNull() ?: 0
+        )
+        if(ifUserExists(user)) {
+            users.remove(user)
+            deletedUsers++
+            binding.tvDeletedUsersCount.text = deletedUsers.toString()
+            Toast.makeText(this, "User deleted successfully.", Toast.LENGTH_SHORT).show()
+        }
+        else {
+            Toast.makeText(this, "User does not exist.", Toast.LENGTH_SHORT).show()
+        }
+    }
+    private fun addUser() {
+        val user = User(
+            binding.etFirstName.text.toString(),
+            binding.etLastName.text.toString(),
+            binding.etEmail.text.toString(),
+            binding.etAge.text.toString().toIntOrNull() ?: 0
+        )
+        if (isEveryFieldFull(user)) {
+            if (isEverythingValid(user)) {
+                if (ifUserExists(user)) {
+                    Toast.makeText(this, "User already exists.", Toast.LENGTH_SHORT).show()
+                } else {
+                    binding.tvOperationStatus.text = "Success"
+                    binding.tvOperationStatus.setTextColor(
+                        ContextCompat.getColor(this, R.color.green)
+                    )
+                    users.add(user)
+                    binding.tvActiveUsersCount.text = users.size.toString()
+                    Toast.makeText(this, "User added successfully.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        } else {
+            binding.tvOperationStatus.text = "Error"
+            binding.tvOperationStatus.setTextColor(
+                ContextCompat.getColor(this, R.color.red))
+        }
+    }
+    private fun isEveryFieldFull(user: User): Boolean {
+        if(user.firstName.isEmpty() || user.lastName.isEmpty() || user.email.isEmpty() || user.age == 0) {
+            Toast.makeText(this, "Please fill in all fields.", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return true
+    }
+    private fun isEverythingValid(user: User): Boolean {
+        if (isFirstNameValid(this, user.firstName) && isLastNameValid(this, user.lastName)
+            && isAgeValid(this, user.age) && isEmailValid(this, user.email)) {
+            return true
+        }
+        return false
+    }
+    private fun ifUserExists(currentUser: User): Boolean {
+        for (user in users) {
+            if (user == currentUser) {
+                return true
             }
         }
+        return false
     }
-}
-fun getStringOfNumbersInGeorgian(number: Int): String {
-    var resultString: String= ""
-    val units = arrayOf(
-        "", "ერთი", "ორი", "სამი", "ოთხი", "ხუთი", "ექვსი", "შვიდი", "რვა", "ცხრა", "ათი")
-    val unitsFrom10To20 = arrayOf(
-        "", "თერთმეტი", "თორმეტი", "ცამეტი", "თოთხმეტი", "თხუთმეტი", "თექვსმეტი", "ჩვიდმეტი", "თვრამეტი", "ცხრამეტი")
-    val twentys = arrayOf(
-        "", "", "ოცი", "ოცი", "ორმოცი", "ორმოცი", "სამოცი", "სამოცი", "ოთხმოცი", "ოთხმოცი"
-    )
-    val tens = arrayOf(
-        "", "", "","ოცდაათი", "", "ორმოცდაათი", "", "სამოცდაათი", "", "ოთხმოცდაათი")
-    val hundreds = arrayOf(
-        "", "ასი", "ორასი", "სამასი", "ოთხასი", "ხუთასი", "ექვსასი", "შვიდასი", "რვაასი", "ცხრაასი", "ათასი")
-
-    if (number <= 10) {
-        resultString = units[number]
-        return resultString
-    }else if (number > 10 && number < 20) {
-        resultString = unitsFrom10To20[number % 10]
-        resultString
-    } else if (number < 100) {
-        resultString = twoDigitNums(number, units, twentys, tens, hundreds, unitsFrom10To20)
-        return resultString
-    }
-    else if (number < 1000){
-        var tempNum = number % 100
-        var dividedBy100 = number / 100
-        if (tempNum == 0){
-            resultString = hundreds[dividedBy100]
-            return resultString
-        } else if (tempNum != 0 && tempNum <= 10) {
-            resultString = hundreds[dividedBy100].dropLast(1) + " " + units[number % 100]
-            return resultString
-        } else if (tempNum > 10 && tempNum < 20) {
-            resultString = hundreds[dividedBy100].dropLast(1) + " " + unitsFrom10To20[(number % 100) % 10]
-            return resultString
+    private fun isFirstNameValid(context: Context, firstName: String): Boolean {
+        val userNameRegex = "^[A-Z][a-z]*$"
+        if (firstName.matches(userNameRegex.toRegex())) {
+            return true
+        } else if (!firstName.first().isUpperCase()){
+            Toast.makeText(context, "Invalid name format. Name must start with uppercase letter.", Toast.LENGTH_SHORT).show()
+            return false
+        } else {
+            Toast.makeText(context, "Invalid name format. Please enter a valid name.", Toast.LENGTH_SHORT).show()
+            return false
         }
-        resultString = hundreds[dividedBy100].dropLast(1) + " " + twoDigitNums(tempNum, units, twentys, tens, hundreds, unitsFrom10To20)
     }
-    else if (number == 1000){
-        resultString = hundreds[number / 100]
-        return resultString
+    private fun isLastNameValid(context: Context, lastName: String): Boolean {
+        val userLastNameRegex = "^[A-Z][a-z]*$"
+        if (lastName.matches(userLastNameRegex.toRegex())) {
+            return true
+        } else if (!lastName.first().isUpperCase()){
+            Toast.makeText(context, "Invalid last name format. Last name must start with uppercase letter.", Toast.LENGTH_SHORT).show()
+            return false
+        } else {
+            Toast.makeText(context, "Invalid last name format. Please enter a valid last name.", Toast.LENGTH_SHORT).show()
+            return false
+        }
     }
-    else {
-        println("Wrong input.")
+    private fun isAgeValid(context: Context, age: Int): Boolean {
+        if (age <= 0 || age > 120) {
+            Toast.makeText(context, "Invalid age range. Please enter a valid age.", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return true
     }
-    return resultString
-}
-fun isOdd(number: Int): Boolean {
-    return number % 2 != 0
-}
-fun isEven(number: Int): Boolean {
-    return number % 2 == 0
-}
-fun twoDigitNums(number: Int, units: Array<String>, twentys: Array<String>, tens: Array<String>,
-                 hundreds: Array<String>, unitsFrom10To20: Array<String>): String {
-    var resultString = ""
-    var numberDividedBy10 = number / 10
-    var remainder = number % 10
-    if (remainder == 0 && isEven(numberDividedBy10)) {
-        resultString = twentys[numberDividedBy10]
-        return resultString
-    } else if (remainder == 0 && isOdd(numberDividedBy10)) {
-        resultString = tens[numberDividedBy10]
-        return resultString
-    }
-    if ((number - remainder) % 20 == 0) {
-        var tempString = twentys[numberDividedBy10].dropLast(1)
-        resultString = tempString + "და" + units[remainder]
-        return resultString
-    } else {
-        var tempString = twentys[numberDividedBy10].dropLast(1)
-        resultString = tempString + "და" + unitsFrom10To20[remainder]
-        return resultString
+    private fun isEmailValid(context: Context, email: String): Boolean {
+        val emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\$"
+        if (email.matches(emailRegex.toRegex()))
+            return true
+        else
+            Toast.makeText(context, "Invalid email format. Please enter a valid email.", Toast.LENGTH_SHORT).show()
+        return false
     }
 }
 
