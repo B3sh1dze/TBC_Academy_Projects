@@ -6,6 +6,9 @@ plugins {
 android {
     namespace = "com.example.myfirsandroidapp"
     compileSdk = 35
+    buildFeatures {
+        viewBinding = true
+    }
 
     defaultConfig {
         applicationId = "com.example.myfirsandroidapp"
@@ -16,6 +19,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     buildTypes {
         release {

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:id="@+id/firstFragment"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstFragment">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnGoBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/back_arrow"
+        android:contentDescription="@string/go_back"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="30dp"/>
+
+    <ImageView
+        android:id="@+id/ivImage1"
+        android:layout_width="250dp"
+        android:layout_height="270dp"
+        android:contentDescription="@string/image"
+        android:src="@drawable/image_for_first_screen"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="100dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvLetIn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/let_s_you_in"
+        android:fontFamily="@font/roboto_bold"
+        android:textSize="50sp"
+        android:layout_marginTop="400dp"
+        android:layout_marginStart="80dp"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llLogins"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="500dp"
+        android:layout_marginStart="10dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llFacebookLogIn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/rectangle"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivFacebook"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/facebook_image" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvContinueWithFacebook"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="@string/continue_with_facebook"
+                android:textSize="20sp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llGoogleIn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivGoogle"
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/google_image" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvContinueWithGoogle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="@string/continue_with_google"
+                android:textSize="20sp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llAppleLogIn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivApple"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/apple_image" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvContinueWithApple"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="@string/continue_with_apple"
+                android:textSize="20sp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_marginTop="700dp">
+
+        <LinearLayout
+            android:id="@+id/llGreyLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/leftGreyLine"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#CCCCCC" />
+
+            <TextView
+                android:id="@+id/tvOr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:text="@string/or"
+                android:textColor="@color/gray"
+                android:textSize="14sp" />
+
+            <View
+                android:id="@+id/rightGreyLine"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#CCCCCC" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_sign_in"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/black"
+            android:text="@string/sign_in_with_password"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginBottom="10dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDontHaveAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center_horizontal"
+                android:text="@string/don_t_have_an_account"
+                android:textColor="@color/gray"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginTop="4dp"
+                android:gravity="center_horizontal"
+                android:text="@string/sign_up"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</FrameLayout>
