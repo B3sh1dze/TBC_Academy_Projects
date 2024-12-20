@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MyFirsAndroidApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_new_user">Add new User</string>
+    <string name="enter_firstname">Enter firstName</string>
+    <string name="enter_lastname">Enter lastname</string>
+    <string name="enter_birthday">Enter Birthday</string>
+    <string name="enter_address">Enter Address</string>
+    <string name="enter_email">Enter Email</string>
 </resources>

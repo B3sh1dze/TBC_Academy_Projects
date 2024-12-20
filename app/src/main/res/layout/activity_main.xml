@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,32 +9,34 @@
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/NumberInputField"
+        android:id="@+id/etenterParameter"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:hint="Enter a number (1-1000)"
+        android:hint="Enter parameter"
         android:textColor="@color/red"
-        android:inputType="number"
         android:clickable="true"
         android:layout_marginStart="100dp"
         android:layout_marginTop="45dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/ClickButton"
+        android:id="@+id/btnSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="submit"
+        android:text="search"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="10dp"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/TextDisplay"
+    <Button
+        android:id="@+id/btnAddNewUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/NumberInput"
-        android:layout_marginLeft="50dp"/>
+        android:text="@string/add_new_user"/>
 
+    <fragment
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.example.myfirsandroidapp.AddNewUser"
+        tools:layout="@layout/fragment_add_new_user" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
