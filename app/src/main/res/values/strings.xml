@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MyFirsAndroidApp</string>
+    <string name="back_button">Go back</string>
+    <string name="profile_picture">Profile picture</string>
+    <string name="admin">Admin</string>
+    <string name="online">Online</string>
+    <string name="menu">Menu</string>
+    <string name="type_your_message_here">Type your message here</string>
+    <string name="send_message">Send message</string>
 </resources>
