@@ -1,108 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.fragment.app.FragmentContainerView
+    android:id="@+id/mainLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:padding="16dp">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnBack"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:background="@drawable/circle"
-        android:contentDescription="@string/back_button"
-        android:drawableEnd="@drawable/return_back_arrow"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.021" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivProfile"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:contentDescription="@string/profile_picture"
-        android:src="@drawable/person_circle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnBack"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvAdminName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/admin"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@id/ivProfile"
-        app:layout_constraintTop_toTopOf="@id/ivProfile"
-        app:layout_constraintBottom_toTopOf="@id/tvStatus"
-        android:layout_marginStart="8dp" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/online"
-        android:textSize="14sp"
-        android:textColor="@color/gray"
-        app:layout_constraintStart_toStartOf="@id/tvAdminName"
-        app:layout_constraintTop_toBottomOf="@id/tvAdminName" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivMenu"
-        android:layout_width="35dp"
-        android:layout_height="37dp"
-        android:layout_marginEnd="16dp"
-        android:contentDescription="@string/menu"
-        android:src="@drawable/ic_menu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/frvMessages"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvViews"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/tvMessage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvStatus"
-        tools:layout="@layout/fragment_messages" />
+        android:layout_height="match_parent"/>
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/tvMessage"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="28dp"
-        android:background="@drawable/send_field_rectangle"
-        android:hint="@string/type_your_message_here"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btnSendMessage"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btnSendMessage"
-        android:layout_width="49dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="28dp"
-        android:background="@drawable/send_button_circle"
-        android:contentDescription="@string/send_message"
-        android:src="@drawable/send_button_image"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.fragment.app.FragmentContainerView>
