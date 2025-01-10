@@ -21,6 +21,13 @@ class BoardFragment : Fragment() {
     private var isGameOver = false
     private val board: Array<Array<String>> by lazy { Array(boardSize) { Array(boardSize) { "" } } }
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            boardSize = it.getInt("boardSize", 3)
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,9 +39,7 @@ class BoardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        arguments?.let {
-            boardSize = it.getInt("boardSize", 3)
-        }
+
         binding.goBackBtn.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.mainLayout, MenuFragment())
