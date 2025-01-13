@@ -1,0 +1,30 @@
+Index: app/src/main/java/com/example/myfirsandroidapp/BoardFragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.myfirsandroidapp\r\n\r\nimport android.os.Bundle\r\nimport android.view.LayoutInflater\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport android.widget.Button\r\nimport android.widget.Toast\r\nimport androidx.fragment.app.Fragment\r\nimport androidx.recyclerview.widget.GridLayoutManager\r\nimport com.example.myfirsandroidapp.databinding.FragmentBoardBinding\r\n\r\nclass BoardFragment : Fragment() {\r\n\r\n    private var _binding: FragmentBoardBinding? = null\r\n    private val binding get() = _binding!!\r\n\r\n    private lateinit var adapter: BoardAdapter\r\n    private var boardSize: Int = 3\r\n    private var currentPlayer = \"X\"\r\n    private var isGameOver = false\r\n    private val board: Array<Array<String>> by lazy { Array(boardSize) { Array(boardSize) { \"\" } } }\r\n\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        arguments?.let {\r\n            boardSize = it.getInt(\"boardSize\", 3)\r\n        }\r\n    }\r\n    override fun onCreateView(\r\n        inflater: LayoutInflater, container: ViewGroup?,\r\n        savedInstanceState: Bundle?\r\n    ): View {\r\n        _binding = FragmentBoardBinding.inflate(inflater, container, false)\r\n        return binding.root\r\n    }\r\n\r\n    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {\r\n        super.onViewCreated(view, savedInstanceState)\r\n\r\n\r\n        binding.goBackBtn.setOnClickListener {\r\n            requireActivity().supportFragmentManager.beginTransaction()\r\n                .replace(R.id.mainLayout, MenuFragment())\r\n                .commit()\r\n        }\r\n\r\n        setupBoard()\r\n    }\r\n\r\n    private fun setupBoard() {\r\n        adapter = BoardAdapter(boardSize) { position ->\r\n            if (!isGameOver) {\r\n                handleCellClick(position)\r\n            }\r\n        }\r\n        // Display RecyclerView with GridLayout\r\n        binding.gridLayout.layoutManager = GridLayoutManager(requireContext(), boardSize)\r\n        binding.gridLayout.adapter = adapter\r\n    }\r\n\r\n    private fun handleCellClick(position: Int) {\r\n        val row = position / boardSize\r\n        val col = position % boardSize\r\n\r\n        val button = binding.gridLayout.findViewHolderForAdapterPosition(position)?.itemView as? Button\r\n        if (button != null && button.text.isEmpty()) {\r\n            button.text = currentPlayer\r\n            board[row][col] = currentPlayer\r\n            if (checkWin(row, col)) {\r\n                Toast.makeText(requireContext(), \"$currentPlayer wins!\", Toast.LENGTH_SHORT).show()\r\n                isGameOver = true\r\n            }\r\n            else if (isBoardFull()) {\r\n                Toast.makeText(requireContext(), \"It's a draw!\", Toast.LENGTH_SHORT).show()\r\n            }\r\n            if (!isGameOver) {\r\n                currentPlayer = if (currentPlayer == \"X\") \"O\" else \"X\"\r\n            }\r\n        }\r\n    }\r\n\r\n    private fun checkWin(row: Int, col: Int): Boolean {\r\n        //Check rows\r\n        if ((0 until boardSize).all { board[row][it] == currentPlayer }) return true\r\n\r\n        // Check columns\r\n        if ((0 until boardSize).all { board[it][col] == currentPlayer }) return true\r\n\r\n        // Check main diagonal\r\n        if (row == col && (0 until boardSize).all { board[it][it] == currentPlayer }) return true\r\n\r\n        // Check anti-diagonal\r\n        if (row + col == boardSize - 1 && (0 until boardSize).all { board[it][boardSize - it - 1] == currentPlayer }) return true\r\n\r\n        return false\r\n    }\r\n\r\n    private fun isBoardFull(): Boolean {\r\n        return board.all { row -> row.all { it.isNotEmpty() } }\r\n    }\r\n\r\n    override fun onDestroyView() {\r\n        super.onDestroyView()\r\n        _binding = null\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/app/src/main/java/com/example/myfirsandroidapp/BoardFragment.kt b/app/src/main/java/com/example/myfirsandroidapp/BoardFragment.kt
+--- a/app/src/main/java/com/example/myfirsandroidapp/BoardFragment.kt	
++++ b/app/src/main/java/com/example/myfirsandroidapp/BoardFragment.kt	
+@@ -39,13 +39,11 @@
+     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+         super.onViewCreated(view, savedInstanceState)
+ 
+-
+         binding.goBackBtn.setOnClickListener {
+             requireActivity().supportFragmentManager.beginTransaction()
+                 .replace(R.id.mainLayout, MenuFragment())
+                 .commit()
+         }
+-
+         setupBoard()
+     }
+ 
+@@ -55,7 +53,6 @@
+                 handleCellClick(position)
+             }
+         }
+-        // Display RecyclerView with GridLayout
+         binding.gridLayout.layoutManager = GridLayoutManager(requireContext(), boardSize)
+         binding.gridLayout.adapter = adapter
+     }
